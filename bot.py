@@ -125,7 +125,7 @@ async def process_inn(message: Message, state: FSMContext):
     db.add_inn(message.from_user.id, inn, company_name)
     cases = await parser.get_cases(inn)
     if cases:
-    db.save_snapshot(inn, cases)
+        db.save_snapshot(inn, cases)
 
     await state.clear()
     await message.answer(
