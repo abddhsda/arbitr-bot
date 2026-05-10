@@ -124,6 +124,7 @@ async def process_inn(message: Message, state: FSMContext):
     # Сохраняем ИНН и делаем снимок текущего состояния дел
     db.add_inn(message.from_user.id, inn, company_name)
     cases = await parser.get_cases(inn)
+    if cases:
     db.save_snapshot(inn, cases)
 
     await state.clear()
